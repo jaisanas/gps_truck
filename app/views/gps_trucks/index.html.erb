@@ -1,0 +1,60 @@
+
+ <p id="notice"><%= notice %></p>
+
+<h1>Gps Trucks</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gps_trucks.each do |gps_truck| %>
+      <tr>
+        <td><%= link_to 'Show', gps_truck %></td>
+        <td><%= link_to 'Edit', edit_gps_truck_path(gps_truck) %></td>
+        <td><%= link_to 'Destroy', gps_truck, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+  <%= @gps_truck.engine %>
+  <br>
+  <%= @gps_truck.address %>
+  <br>
+  <%= @gps_truck.status_text %>
+<br>
+
+<%#= link_to 'New Gps Truck', new_gps_truck_path %> 
+<div id="map" style="width: 400px; height: 400px"></div>
+    <script>
+      var my_var = 
+      console.log(my_var);
+      var latitude = <%= @latitude %>
+      var longitude = <%= @longitude%>
+      console.log(longitude);
+      function initMap() {
+
+        var myLatLng = {lat: latitude, lng: longitude};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: myLatLng
+        });
+
+        map.setZoom(15);
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World!'
+        });
+      }
+    </script>
+  <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyABI4whFkeSmgCIkIfjNY_LxR3fsAFXGfo&callback=initMap">
+  </script>
