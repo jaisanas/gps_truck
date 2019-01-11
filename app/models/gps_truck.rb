@@ -1,5 +1,6 @@
 class GpsTruck < ApplicationRecord
     attr_accessor :imei_number, :latitude, :longitude, :engine, :address, :status_text 
+    validates :latitude, presence: true
 
     def initialize(imei_number, latitude, longitude, engine, address, status_text)
         @imei_number = imei_number

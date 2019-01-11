@@ -12,7 +12,7 @@ class GpsTrucksControllerTest < ActionDispatch::IntegrationTest
 
   test "should get new" do
     get new_gps_truck_url
-    assert_response :success
+    assert_response :error
   end
 
   test "should create gps_truck" do
